@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e1e9ed5-26d7-4468-a327-2433871a6435" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore.swp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/Main.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/interfaces/IForecastDay.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/models/ModelBase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/models/WeatherDay.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/models/WeatherHour.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/models/WeatherSkyCondition.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/ui/WeatherHomeView$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/ui/WeatherHomeView.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/utils/DoubleAverager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/utils/IntAverager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/AbstractLayout.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/DimensionInfo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/GridConstraints.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/GridLayoutManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/HorizontalInfo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/LayoutState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/Spacer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/SupportCode.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/Util.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/intellij/uiDesigner/core/VerticalInfo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/description.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/project-template.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeatherPredictor.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/interfaces/IForecastDay.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/models/ModelBase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherDay.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherHour.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherSkyCondition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/utils/DoubleAverager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/utils/IntAverager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="e5224a03-8a7f-4306-b7d7-3ca51759941a" name="Initialize Repo with models." comment="Initialize Repo with models." />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -186,6 +148,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -752,12 +717,20 @@
       <option name="presentableId" value="Default" />
       <updated>1486925216797</updated>
       <workItem from="1486925218619" duration="6048000" />
-      <workItem from="1486947515820" duration="1757000" />
+      <workItem from="1486947515820" duration="1976000" />
     </task>
+    <task id="LOCAL-00001" summary="Init repo with data models.&#10;">
+      <created>1486961933069</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1486961933069</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7805000" />
+    <option name="totallyTimeSpent" value="8024000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
@@ -799,6 +772,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init repo with data models.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init repo with data models.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -930,6 +907,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="17" column="42" lean-forward="true" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,6 +992,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
