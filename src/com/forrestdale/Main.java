@@ -1,14 +1,32 @@
 package com.forrestdale;
 
-import com.forrestdale.models.WeatherDay;
-import com.forrestdale.models.WeatherHour;
+import com.opencsv.CSVReader;
 
-import javax.swing.*;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        try {
+
+            CSVReader reader = new CSVReader(new FileReader(new String("./out/production/WeatherPredictor/com/forrestdale/weatherData.csv")));
+
+            String[] row = reader.readNext();
+            while (row != null) {
+                for (String cell : row) {
+                    System.out.print(cell);
+                }
+                System.out.println("\n");
+                row = reader.readNext();
+            }
+        }
+        catch (IOException ex) {
+            System.out.println("File not found: " + ex.getMessage());
+            System.out.println(new java.io.File( "." ).getCanonicalPath());;
+        }
 
     }
 }
