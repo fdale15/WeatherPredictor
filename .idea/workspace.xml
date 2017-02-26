@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e1e9ed5-26d7-4468-a327-2433871a6435" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/utils/WeatherDateConverter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/forrestdale/utils/WeatherSkyConditionConverter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/Main.class" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/models/WeatherHour.class" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/models/WeatherHour.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/weatherData.csv" afterPath="$PROJECT_DIR$/out/production/WeatherPredictor/com/forrestdale/weatherData.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/Main.java" afterPath="$PROJECT_DIR$/src/com/forrestdale/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/interfaces/IForecastDay.java" afterPath="$PROJECT_DIR$/src/com/forrestdale/interfaces/IForecastDay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherDay.java" afterPath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherDay.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherHour.java" afterPath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherHour.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherSkyCondition.java" afterPath="$PROJECT_DIR$/src/com/forrestdale/models/WeatherSkyCondition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/utils/ModelLoader.java" afterPath="$PROJECT_DIR$/src/com/forrestdale/utils/ModelLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/utils/WeatherLoader.java" afterPath="$PROJECT_DIR$/src/com/forrestdale/utils/WeatherLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/forrestdale/weatherData.csv" afterPath="$PROJECT_DIR$/src/com/forrestdale/weatherData.csv" />
     </list>
     <list id="e5224a03-8a7f-4306-b7d7-3ca51759941a" name="Initialize Repo with models." comment="Initialize Repo with models." />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -707,7 +697,7 @@
       <updated>1486925216797</updated>
       <workItem from="1486925218619" duration="6048000" />
       <workItem from="1486947515820" duration="2299000" />
-      <workItem from="1488141698348" duration="5065000" />
+      <workItem from="1488141698348" duration="5106000" />
     </task>
     <task id="LOCAL-00001" summary="Init repo with data models.&#10;">
       <created>1486961933069</created>
@@ -723,11 +713,18 @@
       <option name="project" value="LOCAL" />
       <updated>1486962107935</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finished DataLoading.">
+      <created>1488146816772</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1488146816772</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13412000" />
+    <option name="totallyTimeSpent" value="13453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1922" height="1081" extended-state="6" />
@@ -772,7 +769,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init repo with data models.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init repo with data models.&#10;" />
+    <MESSAGE value="Finished DataLoading." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished DataLoading." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
