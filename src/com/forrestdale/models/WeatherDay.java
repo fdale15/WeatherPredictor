@@ -5,14 +5,15 @@ import com.forrestdale.utils.DoubleAverager;
 import com.forrestdale.utils.IntAverager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by forrest on 2/12/17.
  */
 public class WeatherDay implements IForecastDay {
-    private ArrayList<WeatherHour> mWeatherHours;
+    private List<WeatherHour> mWeatherHours;
 
-    public WeatherDay(ArrayList<WeatherHour> weatherHours) {
+    public WeatherDay(List<WeatherHour> weatherHours) {
         this.mWeatherHours = weatherHours;
     }
 
@@ -63,7 +64,7 @@ public class WeatherDay implements IForecastDay {
     }
 
     @Override
-    public ArrayList<WeatherHour> getWeatherHours() {
+    public List<WeatherHour> getWeatherHours() {
         return mWeatherHours;
     }
 

@@ -1,7 +1,6 @@
 package com.forrestdale.models;
 
-import jdk.nashorn.internal.parser.DateParser;
-
+import com.forrestdale.utils.WeatherSkyConditionConverter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,12 +19,41 @@ public class WeatherHour {
     private int mWindDirection;
     private double mStationPressure;
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Date: " + mDate);
+        sb.append("\n");
+        sb.append("Sky Conditions: " + WeatherSkyConditionConverter.ConvertToHumanReadable(mWeatherSkyConditions));
+        sb.append("\n");
+        sb.append("Visibility: " + mVisibility);
+        sb.append("\n");
+        sb.append("Temperature: " + mDryBulbTemp);
+        sb.append("\n");
+        sb.append("Dewpoint: " + mDewPoint);
+        sb.append("\n");
+        sb.append("RH: " + mRelativeHumidity);
+        sb.append("\n");
+        sb.append("Windspeed: " + mWindSpeed);
+        sb.append("\n");
+        sb.append("Wind Dir: " + mWindDirection);
+        sb.append("\n");
+        sb.append("Station Pressure: " + mStationPressure);
+        sb.append("\n");
+
+        return sb.toString();
+    }
+
     public WeatherHour() {
 
     }
 
     public Date getDate() {
         return mDate;
+    }
+
+    public Date getDay() {
+        return new Date(mDate.getYear(), mDate.getMonth(), mDate.getDay());
     }
 
     public void setDate(Date mDate) {
@@ -103,4 +131,6 @@ public class WeatherHour {
     public void setStationPressure(double mStationPressure) {
         this.mStationPressure = mStationPressure;
     }
+
+
 }
