@@ -2,7 +2,7 @@ package com.forrestdale.interfaces;
 
 import com.forrestdale.models.WeatherHour;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by forrest on 2/12/17.
@@ -17,7 +17,7 @@ public interface IForecastDay {
     public double getAvgWindDir();
     public double getAvgStationPressure();
     
-    public ArrayList<WeatherHour> getWeatherHours();
+    public List<WeatherHour> getWeatherHours();
     public WeatherHour getHighTempHour();
     public WeatherHour getLowTempHour();
 }
