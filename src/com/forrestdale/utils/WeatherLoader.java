@@ -1,11 +1,11 @@
 package com.forrestdale.utils;
 
+import com.forrestdale.interfaces.IForecastDay;
 import com.forrestdale.models.WeatherDay;
 import com.forrestdale.models.WeatherHour;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -19,12 +19,25 @@ public class WeatherLoader extends ModelLoader {
         mWeatherHours = generateWeatherHours(getRows());
     }
 
-    public List<WeatherDay> getWeatherDays() {
-        List<WeatherDay> result = new ArrayList<WeatherDay>();
-        Map<Date, List<WeatherHour>> days = mWeatherHours.stream().collect(Collectors.groupingBy(WeatherHour::getDay));
+    public Map<String, IForecastDay> getWeatherDays() {
+        Map<String, IForecastDay> result = new HashMap<>();
+        Map<String, List<WeatherHour>> days = new HashMap<>();
+        SimpleDateFormat fmt = new SimpleDateFormat("MM.dd.yyyy");
 
-        for (Map.Entry<Date, List<WeatherHour>> day : days.entrySet()) {
-            result.add(new WeatherDay(day.getValue()));
+        //Group by day.
+        for (WeatherHour wh : mWeatherHours) {
+            Date keyDate = wh.getDate();
+            keyDate.setYear(0);
+            List<WeatherHour> lst = days.get(fmt.format(keyDate));
+            if (lst == null) {
+                lst = new ArrayList<>();
+                days.put(fmt.format(wh.getDate()), lst);
+            }
+            lst.add(wh);
+        }
+
+        for (Map.Entry<String, List<WeatherHour>> day : days.entrySet()) {
+            result.put(day.getKey(), new WeatherDay(day.getValue()));
         }
         return result;
     }

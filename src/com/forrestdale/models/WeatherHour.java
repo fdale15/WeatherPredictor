@@ -52,8 +52,8 @@ public class WeatherHour {
         return mDate;
     }
 
-    public Date getDay() {
-        return new Date(mDate.getYear(), mDate.getMonth(), mDate.getDay());
+    public Long getDay() {
+        return mDate.getTime();
     }
 
     public void setDate(Date mDate) {
