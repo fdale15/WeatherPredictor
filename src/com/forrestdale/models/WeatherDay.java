@@ -5,6 +5,7 @@ import com.forrestdale.utils.DoubleAverager;
 import com.forrestdale.utils.IntAverager;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,6 +16,17 @@ public class WeatherDay implements IForecastDay {
 
     public WeatherDay(List<WeatherHour> weatherHours) {
         this.mWeatherHours = weatherHours;
+    }
+
+    public WeatherDay() {
+        this.mWeatherHours = new ArrayList<>();
+    }
+
+    public void addWeatherHour(WeatherHour weatherHour) {
+        mWeatherHours.add(weatherHour);
+    }
+    public void addWeatherHours(List<WeatherHour> weatherHours) {
+        mWeatherHours.addAll(weatherHours);
     }
 
     @Override
@@ -76,5 +88,50 @@ public class WeatherDay implements IForecastDay {
     @Override
     public WeatherHour getLowTempHour() {
         return mWeatherHours.stream().min((x1, x2) -> Integer.compare(x1.getDryBulbTemp(), x2.getDryBulbTemp())).get();
+    }
+
+    @Override
+    public Date getDate() {
+        return new Date(mWeatherHours.get(0).getDay());
+    }
+
+    @Override
+    public Date getDay() {
+        Date d = new Date(mWeatherHours.get(0).getDay());
+        return new Date(0, d.getMonth(), d.getDay());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("-----------------Day Forecast for " + getDate().toString() + "-----------------\n");
+        sb.append("High Temp: " + getHighTemp());
+        sb.append("\n");
+        sb.append("Low Temp: " + getLowTemp());
+        sb.append("\n");
+        sb.append("Avg Temp: " + getAvgTemp());
+        sb.append("\n");
+        sb.append("Avg Visibility: " + getAvgVisibility());
+        sb.append("\n");
+        sb.append("Avg RH: " + getAvgRelativeHumidity());
+        sb.append("\n");
+        sb.append("Avg Windspeed: " + getAvgWindSpeed());
+        sb.append("\n");
+        sb.append("Avg Wind Direction: " + getAvgWindDir());
+        sb.append("\n");
+        sb.append("Avg Station Pressure: " + getHighTemp());
+        sb.append("\n");
+
+        for (WeatherHour wh : mWeatherHours) {
+            sb.append(wh.toString());
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
+
+    public String getKey() {
+        return mWeatherHours.get(0).getKey();
     }
 }

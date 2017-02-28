@@ -1,15 +1,22 @@
 package com.forrestdale;
 
-import com.forrestdale.models.WeatherDay;
+import com.forrestdale.interfaces.IForecastDay;
+import com.forrestdale.predictor.WeatherPredictor;
 import com.forrestdale.utils.WeatherLoader;
 
+import java.util.Date;
+import java.util.List;
+
 public class Main {
+    private static final String FILEPATH = "./src/com/forrestdale/weatherData.csv";
 
     public static void main(String[] args) {
-        WeatherLoader wl = new WeatherLoader("./src/com/forrestdale/weatherData.csv", true);
+        WeatherLoader wl = new WeatherLoader(FILEPATH, true);
+        WeatherPredictor predictor = new WeatherPredictor(wl.getWeatherDays());
 
-        for (WeatherDay wh : wl.getWeatherDays()) {
-            System.out.println(wh);
+        List<IForecastDay> forecastDay = predictor.PredictForecastRange(new Date(0, 1, 26), new Date(0, 1, 27));
+        for (IForecastDay day : forecastDay) {
+            System.out.println(day);
         }
     }
 }

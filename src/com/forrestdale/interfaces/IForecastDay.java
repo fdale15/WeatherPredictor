@@ -2,6 +2,7 @@ package com.forrestdale.interfaces;
 
 import com.forrestdale.models.WeatherHour;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,4 +21,7 @@ public interface IForecastDay {
     public List<WeatherHour> getWeatherHours();
     public WeatherHour getHighTempHour();
     public WeatherHour getLowTempHour();
+
+    public Date getDate();
+    public Date getDay();
 }

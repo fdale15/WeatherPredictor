@@ -1,6 +1,8 @@
 package com.forrestdale.models;
 
 import com.forrestdale.utils.WeatherSkyConditionConverter;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -52,8 +54,14 @@ public class WeatherHour {
         return mDate;
     }
 
-    public Date getDay() {
-        return new Date(mDate.getYear(), mDate.getMonth(), mDate.getDay());
+    public Long getDay() {
+        return mDate.getTime();
+    }
+
+    public String getKey() {
+        Date keyDate = new Date(mDate.getTime());
+        keyDate.setYear(0);
+        return new SimpleDateFormat("MM.dd.yyyy").format(keyDate);
     }
 
     public void setDate(Date mDate) {
