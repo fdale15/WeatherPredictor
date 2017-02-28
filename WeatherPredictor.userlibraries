@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="opencsv-3.9">
+    <archive path="/Users/forrestdale/Downloads/opencsv-3.9.jar" />
+  </library>
+</eclipse-userlibraries>
+
