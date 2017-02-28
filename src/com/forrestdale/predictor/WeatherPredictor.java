@@ -14,6 +14,8 @@ import java.util.Map;
  * Created by forrest on 2/26/17.
  */
 public class WeatherPredictor implements IForecastPredictor {
+    private static final int DAY_MILLIS = 86400000;
+
     private Map<String, IForecastDay> mForecastDays;
 
     public WeatherPredictor(Map<String, IForecastDay> forecastDays) {
@@ -22,30 +24,36 @@ public class WeatherPredictor implements IForecastPredictor {
 
     //TODO: Actually implement the prediction.
     @Override
-    public List<IForecastDay> GetForecastRange(Date startDate, Date endDate) {
+    public List<IForecastDay> PredictForecastRange(Date startDate, Date endDate) {
         List<IForecastDay> result = new ArrayList<>();
 
-        Date currentDate = startDate;
         SimpleDateFormat fmt = new SimpleDateFormat("MM.dd.yyyy");
 
         do {
-            IForecastDay day = mForecastDays.get(fmt.format(startDate));
-
-            if (day != null) {
-                result.add(day);
-            }
-            startDate.setTime(startDate.getTime() + 86400000);
+            result.add(PredictForecastDay(startDate));
+            startDate.setTime(startDate.getTime() + DAY_MILLIS);
         } while (startDate.compareTo(endDate) <= 0);
 
         return result;
     }
 
-    //TODO: Actually implement the prediction.
     @Override
-    public IForecastDay GetForecastDay(Date date) {
+    public IForecastDay PredictForecastDay(Date date) {
         SimpleDateFormat fmt = new SimpleDateFormat("MM.dd.yyyy");
+        IForecastDay pastYesterday = mForecastDays.get(fmt.format(date.getTime() - DAY_MILLIS));
+        IForecastDay pastDay = mForecastDays.get(fmt.format(date));
+        IForecastDay pastTomorrow = mForecastDays.get(fmt.format(date.getTime() + DAY_MILLIS));
 
-        IForecastDay result = mForecastDays.get(fmt.format(date));
+        WeatherDay result = new WeatherDay();
+        if (pastDay != null) {
+            result.addWeatherHours(pastDay.getWeatherHours());
+        }
+        if (pastYesterday != null) {
+            result.addWeatherHours(pastYesterday.getWeatherHours());
+        }
+        if (pastTomorrow != null) {
+            result.addWeatherHours(pastTomorrow.getWeatherHours());
+        }
 
         return result;
     }

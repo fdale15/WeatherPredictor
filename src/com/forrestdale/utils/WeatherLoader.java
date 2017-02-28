@@ -22,19 +22,9 @@ public class WeatherLoader extends ModelLoader {
     public Map<String, IForecastDay> getWeatherDays() {
         Map<String, IForecastDay> result = new HashMap<>();
         Map<String, List<WeatherHour>> days = new HashMap<>();
-        SimpleDateFormat fmt = new SimpleDateFormat("MM.dd.yyyy");
 
-        //Group by day.
-        for (WeatherHour wh : mWeatherHours) {
-            Date keyDate = wh.getDate();
-            keyDate.setYear(0);
-            List<WeatherHour> lst = days.get(fmt.format(keyDate));
-            if (lst == null) {
-                lst = new ArrayList<>();
-                days.put(fmt.format(wh.getDate()), lst);
-            }
-            lst.add(wh);
-        }
+        //Group by the day.
+        days = mWeatherHours.stream().collect(Collectors.groupingBy(WeatherHour::getKey));
 
         for (Map.Entry<String, List<WeatherHour>> day : days.entrySet()) {
             result.put(day.getKey(), new WeatherDay(day.getValue()));

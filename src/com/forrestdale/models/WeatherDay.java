@@ -18,6 +18,17 @@ public class WeatherDay implements IForecastDay {
         this.mWeatherHours = weatherHours;
     }
 
+    public WeatherDay() {
+        this.mWeatherHours = new ArrayList<>();
+    }
+
+    public void addWeatherHour(WeatherHour weatherHour) {
+        mWeatherHours.add(weatherHour);
+    }
+    public void addWeatherHours(List<WeatherHour> weatherHours) {
+        mWeatherHours.addAll(weatherHours);
+    }
+
     @Override
     public int getHighTemp() {
         return mWeatherHours.stream().max((x1, x2) -> Integer.compare(x1.getDryBulbTemp(), x2.getDryBulbTemp())).get().getDryBulbTemp();
@@ -118,5 +129,9 @@ public class WeatherDay implements IForecastDay {
         }
 
         return sb.toString();
+    }
+
+    public String getKey() {
+        return mWeatherHours.get(0).getKey();
     }
 }
