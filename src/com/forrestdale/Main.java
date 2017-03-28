@@ -3,6 +3,8 @@ package com.forrestdale;
 import com.forrestdale.interfaces.IForecastDay;
 import com.forrestdale.predictor.WeatherPredictor;
 import com.forrestdale.utils.WeatherLoader;
+import com.forrestdale.viewmodels.WeatherSingleViewModel;
+import com.forrestdale.views.WeatherSingleView;
 
 import java.util.Date;
 import java.util.List;
@@ -14,9 +16,9 @@ public class Main {
         WeatherLoader wl = new WeatherLoader(FILEPATH, true);
         WeatherPredictor predictor = new WeatherPredictor(wl.getWeatherDays());
 
-        List<IForecastDay> forecastDay = predictor.PredictForecastRange(new Date(0, 1, 26), new Date(0, 1, 27));
-        for (IForecastDay day : forecastDay) {
-            System.out.println(day);
-        }
+        WeatherSingleViewModel viewModel = new WeatherSingleViewModel(predictor, predictor.PredictForecastDay(new Date(0, 2, 26)));
+        WeatherSingleView view = new WeatherSingleView(viewModel);
+        viewModel.setForecastDay(predictor.PredictForecastDay(new Date(0, 2, 26)));
+        view.setVisible(true);
     }
 }

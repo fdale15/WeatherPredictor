@@ -5,6 +5,7 @@ import com.forrestdale.utils.DoubleAverager;
 import com.forrestdale.utils.IntAverager;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -31,12 +32,12 @@ public class WeatherDay implements IForecastDay {
 
     @Override
     public int getHighTemp() {
-        return mWeatherHours.stream().max((x1, x2) -> Integer.compare(x1.getDryBulbTemp(), x2.getDryBulbTemp())).get().getDryBulbTemp();
+        return mWeatherHours.stream().max(Comparator.comparingInt(WeatherHour::getDryBulbTemp)).get().getDryBulbTemp();
     }
 
     @Override
     public int getLowTemp() {
-        return mWeatherHours.stream().min((x1, x2) -> Integer.compare(x1.getDryBulbTemp(), x2.getDryBulbTemp())).get().getDryBulbTemp();
+        return mWeatherHours.stream().min(Comparator.comparingInt(WeatherHour::getDryBulbTemp)).get().getDryBulbTemp();
     }
 
     @Override
@@ -82,12 +83,12 @@ public class WeatherDay implements IForecastDay {
 
     @Override
     public WeatherHour getHighTempHour() {
-        return mWeatherHours.stream().max((x1, x2) -> Integer.compare(x1.getDryBulbTemp(), x2.getDryBulbTemp())).get();
+        return mWeatherHours.stream().max(Comparator.comparingInt(WeatherHour::getDryBulbTemp)).get();
     }
 
     @Override
     public WeatherHour getLowTempHour() {
-        return mWeatherHours.stream().min((x1, x2) -> Integer.compare(x1.getDryBulbTemp(), x2.getDryBulbTemp())).get();
+        return mWeatherHours.stream().min(Comparator.comparingInt(WeatherHour::getDryBulbTemp)).get();
     }
 
     @Override

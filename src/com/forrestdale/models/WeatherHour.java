@@ -24,24 +24,14 @@ public class WeatherHour {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Date: " + mDate);
-        sb.append("\n");
+        sb.append(mDate.getHours() + ":00");
+        sb.append("\t");
         sb.append("Sky Conditions: " + WeatherSkyConditionConverter.ConvertToHumanReadable(mWeatherSkyConditions));
-        sb.append("\n");
+        sb.append("\t");
         sb.append("Visibility: " + mVisibility);
-        sb.append("\n");
+        sb.append("\t");
         sb.append("Temperature: " + mDryBulbTemp);
-        sb.append("\n");
-        sb.append("Dewpoint: " + mDewPoint);
-        sb.append("\n");
-        sb.append("RH: " + mRelativeHumidity);
-        sb.append("\n");
-        sb.append("Windspeed: " + mWindSpeed);
-        sb.append("\n");
-        sb.append("Wind Dir: " + mWindDirection);
-        sb.append("\n");
-        sb.append("Station Pressure: " + mStationPressure);
-        sb.append("\n");
+        sb.append("\t");
 
         return sb.toString();
     }

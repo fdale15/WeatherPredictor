@@ -40,6 +40,8 @@ public class WeatherPredictor implements IForecastPredictor {
     @Override
     public IForecastDay PredictForecastDay(Date date) {
         SimpleDateFormat fmt = new SimpleDateFormat("MM.dd.yyyy");
+        date.setYear(0);
+
         IForecastDay pastYesterday = mForecastDays.get(fmt.format(date.getTime() - DAY_MILLIS));
         IForecastDay pastDay = mForecastDays.get(fmt.format(date));
         IForecastDay pastTomorrow = mForecastDays.get(fmt.format(date.getTime() + DAY_MILLIS));
