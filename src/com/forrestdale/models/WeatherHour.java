@@ -1,10 +1,10 @@
 package com.forrestdale.models;
 
 import com.forrestdale.utils.WeatherSkyConditionConverter;
+import javafx.util.Pair;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by forrest on 2/12/17.
@@ -130,5 +130,27 @@ public class WeatherHour {
         this.mStationPressure = mStationPressure;
     }
 
+    public WeatherSkyCondition getAvgWeatherSkyCondition() {
+        Map<WeatherSkyCondition, Integer> conditionMap = new HashMap<>();
 
+        for (WeatherSkyCondition condition : mWeatherSkyConditions) {
+            if (conditionMap.containsKey(condition)) {
+                Integer count = conditionMap.get(condition);
+                conditionMap.put(condition, count + 1);
+            }
+            else {
+                conditionMap.put(condition, 1);
+            }
+        }
+
+        WeatherSkyCondition most = null;
+        int count = 0;
+        for (Map.Entry<WeatherSkyCondition, Integer> pair : conditionMap.entrySet()) {
+            if (pair.getValue() > count) {
+                count = pair.getValue();
+                most = pair.getKey();
+            }
+        }
+        return most;
+    }
 }

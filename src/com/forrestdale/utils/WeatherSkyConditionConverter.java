@@ -3,6 +3,11 @@ package com.forrestdale.utils;
 import com.forrestdale.models.WeatherSkyCondition;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -45,5 +50,32 @@ public class WeatherSkyConditionConverter {
         }
 
         return sb.toString();
+    }
+
+    public static ImageIcon GetImageForSkyCondition(WeatherSkyCondition skyCondition) {
+        String imgString = "src/com/forrestdale/images/";
+        switch (skyCondition) {
+            case BROKEN:
+                imgString += "broken.jpg";
+                break;
+            case CLEAR:
+                imgString += "clear.jpg";
+                break;
+            case FEW:
+            case SCATTERED:
+                imgString += "scattered.jpg";
+                break;
+            case OVERCAST:
+                imgString += "overcast.jpg";
+                break;
+        }
+
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(imgString));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new ImageIcon(img);
     }
 }

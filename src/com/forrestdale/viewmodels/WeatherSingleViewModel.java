@@ -4,6 +4,7 @@ import com.forrestdale.ObserverBase;
 import com.forrestdale.interfaces.IForecastDay;
 import com.forrestdale.interfaces.IForecastPredictor;
 import com.forrestdale.models.WeatherDay;
+import com.forrestdale.utils.DateUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,14 +43,7 @@ public class WeatherSingleViewModel extends ObserverBase {
 
     public void nextDateCommand() {
         System.out.println("Next date command.");
-
-        LocalDate date = LocalDate.of(mSelectedDateObject.getYear(), mSelectedDateObject.getMonth(), mSelectedDateObject.getDate());
-        date = date.plusDays(1);
-
-        int year = date.getYear();
-        int month = date.getMonthValue();
-        int day = date.getDayOfMonth();
-        mSelectedDateObject = new Date(year, month, day);
+        mSelectedDateObject = DateUtil.deltaDayDate(mSelectedDateObject, 1);
         SimpleDateFormat df = new SimpleDateFormat("MM/dd");
         setSelectedDate(df.format(mSelectedDateObject));
         System.out.println(df.format(mSelectedDateObject));
@@ -58,10 +52,7 @@ public class WeatherSingleViewModel extends ObserverBase {
 
     public void previousDateCommand() {
         System.out.println("Previous date command.");
-        Calendar c = Calendar.getInstance();
-        c.setTime(mSelectedDateObject);
-        c.add(Calendar.DATE, 1);
-        mSelectedDateObject = new Date(c.getTime().getTime());
+        mSelectedDateObject = DateUtil.deltaDayDate(mSelectedDateObject, -1);
         SimpleDateFormat df = new SimpleDateFormat("MM/dd");
         setSelectedDate(df.format(mSelectedDateObject));
         System.out.println(df.format(mSelectedDateObject));
@@ -73,7 +64,7 @@ public class WeatherSingleViewModel extends ObserverBase {
 
         try {
             System.out.println("SelectedDate: " + mSelectedDate);
-            SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+            SimpleDateFormat df = new SimpleDateFormat("MM/dd", Locale.ENGLISH);
             Date date = new Date(df.parse(mSelectedDate).getTime());
             mSelectedDateObject = new Date(date.getTime());
             IForecastDay day = mPredictor.PredictForecastDay(date);
@@ -81,7 +72,7 @@ public class WeatherSingleViewModel extends ObserverBase {
         } catch (Exception ex) {
             JDialog dialog = new JDialog();
             dialog.setTitle("Invalid Date");
-            dialog.add(new Label("Date must be in format MM/DD/YYYY"));
+            dialog.add(new Label("Date must be in format MM/dd"));
             dialog.setSize(250, 100);
             dialog.setVisible(true);
         }

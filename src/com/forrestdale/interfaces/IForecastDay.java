@@ -1,6 +1,7 @@
 package com.forrestdale.interfaces;
 
 import com.forrestdale.models.WeatherHour;
+import com.forrestdale.models.WeatherSkyCondition;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ public interface IForecastDay {
     public double getAvgWindSpeed();
     public double getAvgWindDir();
     public double getAvgStationPressure();
+    public WeatherSkyCondition getAvgSkyCondition();
     
     public List<WeatherHour> getWeatherHours();
     public WeatherHour getHighTempHour();

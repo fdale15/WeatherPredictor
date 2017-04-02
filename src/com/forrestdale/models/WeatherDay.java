@@ -4,10 +4,8 @@ import com.forrestdale.interfaces.IForecastDay;
 import com.forrestdale.utils.DoubleAverager;
 import com.forrestdale.utils.IntAverager;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by forrest on 2/12/17.
@@ -74,6 +72,32 @@ public class WeatherDay implements IForecastDay {
     public double getAvgStationPressure() {
         DoubleAverager avg = mWeatherHours.stream().map(WeatherHour::getStationPressure).collect(DoubleAverager::new, DoubleAverager::accept, DoubleAverager::combine);
         return avg.average();
+    }
+
+    @Override
+    public WeatherSkyCondition getAvgSkyCondition() {
+        Map<WeatherSkyCondition, Integer> conditionMap = new HashMap<>();
+
+        for (WeatherHour wh : mWeatherHours) {
+            WeatherSkyCondition condition = wh.getAvgWeatherSkyCondition();
+
+            if (conditionMap.containsKey(condition)) {
+                conditionMap.put(condition, conditionMap.get(condition) + 1);
+            }
+            else {
+                conditionMap.put(condition, 1);
+            }
+        }
+
+        WeatherSkyCondition avgCondition = null;
+        int count = 0;
+        for (Map.Entry<WeatherSkyCondition, Integer> pair : conditionMap.entrySet()) {
+            if (pair.getValue() > count) {
+                count = pair.getValue();
+                avgCondition = pair.getKey();
+            }
+        }
+        return avgCondition;
     }
 
     @Override

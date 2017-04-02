@@ -4,9 +4,12 @@ import com.forrestdale.ObserverBase;
 import com.forrestdale.interfaces.IForecastDay;
 import com.forrestdale.interfaces.ISubscriber;
 import com.forrestdale.models.WeatherHour;
+import com.forrestdale.models.WeatherSkyCondition;
+import com.forrestdale.utils.WeatherSkyConditionConverter;
 import com.forrestdale.viewmodels.WeatherSingleViewModel;
 import javafx.scene.control.DatePicker;
 import sun.awt.im.InputMethodAdapter;
+import sun.plugin.javascript.JSClassLoader;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -45,6 +48,8 @@ public class WeatherSingleView extends JFrame implements ISubscriber {
 
     private WeatherSingleViewModel mViewModel;
     private JList hourlyList;
+    private JScrollPane hourlyScrollPane;
+    private JLabel weatherImage;
 
     /**
      * Create the panel.
@@ -232,15 +237,19 @@ public class WeatherSingleView extends JFrame implements ISubscriber {
         gbc_lblWinddirvalue.gridy = 12;
         weatherInfoPanel.add(lblWinddirvalue, gbc_lblWinddirvalue);
 
-        btnForecast = new JButton("Forecast");
-        btnForecast.setSize(300, 200);
-        btnForecast.setLocation(400, 75);
-        add(btnForecast);
+        weatherImage = new JLabel(WeatherSkyConditionConverter.GetImageForSkyCondition(WeatherSkyCondition.CLEAR));
+        weatherImage.setSize(300, 200);
+        weatherImage.setLocation(400, 75);
+        add(weatherImage);
 
         hourlyList = new JList();
-        hourlyList.setLocation(0, 300);
-        hourlyList.setSize(750, 200);
-        add(hourlyList);
+
+        hourlyScrollPane = new JScrollPane(hourlyList);
+        hourlyScrollPane.setLocation(0, 300);
+        hourlyScrollPane.setSize(750, 200);
+        add(hourlyScrollPane);
+
+
     }
 
     private void initializeCommands() {
@@ -291,6 +300,8 @@ public class WeatherSingleView extends JFrame implements ISubscriber {
             hourlyList.setListData(mViewModel.getForecastDay().getWeatherHours().toArray());
 
             lblDatevalue.setText(dateField.getText());
+
+            weatherImage.setIcon(WeatherSkyConditionConverter.GetImageForSkyCondition(mViewModel.getForecastDay().getAvgSkyCondition()));
         }
         else if (property.equals(WeatherSingleViewModel.SELECTED_DATE_PROPERTY)) {
             dateField.setText(mViewModel.getSelectedDate());
