@@ -1,5 +1,6 @@
 package com.forrestdale.utils;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -19,5 +20,15 @@ public class DateUtil {
         int day = date.getDayOfMonth();
 
         return new Date(year, month, day);
+    }
+
+    public static String getTime(Date date) {
+        SimpleDateFormat fmt = new SimpleDateFormat("hh:mm a");
+        return fmt.format(date);
+    }
+
+    public static String getDay(Date date) {
+        SimpleDateFormat fmt = new SimpleDateFormat("MM/dd");
+        return fmt.format(date);
     }
 }

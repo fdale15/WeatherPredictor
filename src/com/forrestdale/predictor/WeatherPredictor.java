@@ -3,6 +3,7 @@ package com.forrestdale.predictor;
 import com.forrestdale.interfaces.IForecastDay;
 import com.forrestdale.interfaces.IForecastPredictor;
 import com.forrestdale.models.WeatherDay;
+import com.forrestdale.utils.DateUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,16 +23,17 @@ public class WeatherPredictor implements IForecastPredictor {
         mForecastDays = forecastDays;
     }
 
-    //TODO: Actually implement the prediction.
     @Override
     public List<IForecastDay> PredictForecastRange(Date startDate, Date endDate) {
         List<IForecastDay> result = new ArrayList<>();
+        startDate.setYear(0);
+        endDate.setYear(0);
 
         SimpleDateFormat fmt = new SimpleDateFormat("MM.dd.yyyy");
 
         do {
             result.add(PredictForecastDay(startDate));
-            startDate.setTime(startDate.getTime() + DAY_MILLIS);
+            startDate = DateUtil.deltaDayDate(startDate, 1);
         } while (startDate.compareTo(endDate) <= 0);
 
         return result;

@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by forrest on 2/26/17.
@@ -52,6 +54,8 @@ public class WeatherSkyConditionConverter {
         return sb.toString();
     }
 
+    private static Map<String, ImageIcon> imgCache = new HashMap<>();
+
     public static ImageIcon GetImageForSkyCondition(WeatherSkyCondition skyCondition) {
         String imgString = "src/com/forrestdale/images/";
         switch (skyCondition) {
@@ -70,12 +74,20 @@ public class WeatherSkyConditionConverter {
                 break;
         }
 
+        //If we have the image in cache, load it.
+        //Simple but not effective enough. The bottle neck is resizing the images.
+        if (imgCache.containsKey(imgString)) {
+            System.out.println("Loaded image from cache.");
+            return imgCache.get(imgString);
+        }
+
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File(imgString));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new ImageIcon(img);
+        imgCache.put(imgString, new ImageIcon(img));
+        return imgCache.get(imgString);
     }
 }
